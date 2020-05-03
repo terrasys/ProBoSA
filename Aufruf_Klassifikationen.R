@@ -31,7 +31,7 @@ proj4string(ru) <- CRS(paste("+init=epsg:",EPSG,sep=""))
 #-----------------------------------------------------------------------------------------------------
 source(file.path(W.DIR,RULE.DIR,"BAG/Bodenartengruppen.R"))
 source(file.path(W.DIR,RULE.DIR,"BAHG/Bodenartenhauptgruppen.R"))
-source(file.path(W.DIR,RULE.DIR,"GENESE/Genese.R"))
+source(file.path(W.DIR,RULE.DIR,"Genese/Genese.R"))
 source(file.path(W.DIR,RULE.DIR,"Carbonat.R"))
 source(file.path(W.DIR,RULE.DIR,"Skelett.R"))
 source(file.path(W.DIR,RULE.DIR,"Zusammenfuehrung_Typen.R"))
