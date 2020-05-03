@@ -8,11 +8,11 @@ print("Working directory, data and settings")
 #working directory
 W.DIR <- "..."
 #rule directory
-RULE.DIR <- "_rules/"
+RULE.DIR <- "REGELN/"
 #directory with layer-specific shapes containing transformation results
-VECTOR.DIR <- "_data/"
+VECTOR.DIR <- "DATEN/"
 #result directory
-RESULT.DIR <- "_result/"
+RESULT.DIR <- "ERGEBNIS/"
 RU <- "bezugseinheiten_basic.shp"
 #EPSG code of shape files
 EPSG <- 31468
