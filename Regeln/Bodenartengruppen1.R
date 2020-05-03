@@ -14,7 +14,7 @@ for(i in 1:length(s)){
 #------------------------------------------------------------------------------------------------------
 #Subklassifikationsschleife
 #------------------------------------------------------------------------------------------------------
-setwd((file.path(W.DIR,RULE.DIR)))
+setwd((paste(W.DIR,RULE.DIR,"BAG/",sep=")))
 #classification
 bag.lt <- list.files(pattern="(BAG_).*\\.R$")
 #------------------------------------------------------------------------------------------------------
@@ -30,7 +30,7 @@ for(j in bag.lt) {
   tryCatch({source(j)},error=function(e){})
 }
 #------------------------------------------------------------------------------------------------------
-#Subschleife für Klassenaggregieruung
+#Subschleife fÃ¼r Klassenaggregieruung
 #------------------------------------------------------------------------------------------------------
 if(L>10){
 v.BAG <- c("ss","ls","us","sl","ll","tl","su","lu","tu","ut","lt","ste","kip","hne")
@@ -52,9 +52,9 @@ for(k in v.BAG){
 m <- s[grepl("CL_", names(s))]
 s$CLASS <- v.BAG[apply(m, 1, which.is.max)]
 #------------------------------------------------------------------------------------------------------
-#Berechnung der Qualitätsmaße
+#Berechnung der QualitÃ¤tsmaÃŸe
 #------------------------------------------------------------------------------------------------------
-#Klassifikationsstärke (beste und zweitbeste Klasse)
+#KlassifikationsstÃ¤rke (beste und zweitbeste Klasse)
 s$CLASS_MS1 <- apply(m, 1, max)
 s$CLASS_MS2 <- apply(m, 1, function(row) sort(unique(row), decreasing = TRUE)[2])    
 s$CLASS_SUM <- apply(m, 1, sum)
