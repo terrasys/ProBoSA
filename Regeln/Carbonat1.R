@@ -14,14 +14,14 @@ for(i in 1:length(s)){
 #------------------------------------------------------------------------------------------------------
 #Subklassifikationsschleife
 #------------------------------------------------------------------------------------------------------
-setwd((file.path(W.DIR,RULE.DIR)))
+setwd((paste(W.DIR,RULE.DIR,"Carbonat/",sep="")))
 #classification
 cal.lt <- list.files(pattern="(^c[0-6]{1})_.*\\.R$")
 for(j in cal.lt) {
   tryCatch({source(j)},error=function(e){})
 }
 #------------------------------------------------------------------------------------------------------
-#Subschleife für Klassenaggregieruung
+#Subschleife fÃ¼r Klassenaggregieruung
 #------------------------------------------------------------------------------------------------------
 v.STF <- c("c0","c1","c2","c3","c4","c5","c6")
 for(k in v.STF){
@@ -38,9 +38,9 @@ for(k in v.STF){
 m <- s[grepl("CL_", names(s))]
 s$CLASS <- v.STF[apply(m, 1, which.is.max)]
 #------------------------------------------------------------------------------------------------------
-#Berechnung der Qualitätsmaße
+#Berechnung der QualitÃ¤tsmaÃŸe
 #------------------------------------------------------------------------------------------------------
-#Klassifikationsstärke (beste und zweitbeste Klasse)
+#KlassifikationsstÃ¤rke (beste und zweitbeste Klasse)
 s$CLASS_MS1 <- apply(m, 1, max)
 s$CLASS_MS2 <- apply(m, 1, function(row) sort(unique(row), decreasing = TRUE)[2])    
 s$CLASS_SUM <- apply(m, 1, sum)
@@ -61,7 +61,7 @@ s$CLASS_MS2 <- ifelse(s$CLASS_N==3 &  s$CLASS_MS2==0,
 s$CLASS_MS2 <- ifelse(s$CLASS_N==4 & s$CLASS_MS2==0,
                            apply(m, 1, function(row) sort(unique(row), decreasing = TRUE)[2]),
                            s$CLASS_MS2)
-#Klassifikationsstabilität
+#KlassifikationsstabilitÃ¤t
 s$CLASS_STB <- s$CLASS_MS1-s$CLASS_MS2
 #Quelle
 s$ID <- 1:nrow(s)
